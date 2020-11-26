@@ -12,27 +12,26 @@ package notification.system;
 public class notification {
     
     
-    NotificationTemplates managment = new NotificationTemplates();  
+    /*
     
-    public  void  mange(String type ,String[] replace ,String method,String email){
+    NotificationTemplates managment = new NotificationTemplates(); 
+    
+    public void manage(String type ,String[] Replace, String method){
+    
+   String notification= this.replacement(Replace,type,method);
     
     
     
-    String template =managment.read(type);
-    
-
-    String notification=this.replacement(replace, template);
-    
-    System.out.println("kjhjbb");
     
     }
     
+
     
     
-    public  String replacement(String[] replace, String template ){
-    
-    
-    
+    public  String replacement(String[] replace, String type,String method ){
+        
+      String template =managment.read(type);
+   
 for(int j=0;j<replace.length;j++){
  for(int i=0;i<template.length();i++){
    if(template.charAt(i)=='*'){
@@ -42,11 +41,29 @@ for(int j=0;j<replace.length;j++){
  }
     
 }
-    
-    
-  return  template;
+     
+  return  template+">>"+method;
     
 }
+    public void createTemplete(String type ,String template,String Language){
+        
+        managment.create( type , template,Language);
+        
+    }
+  public void readTemplete(String type){
+        System.out.println(managment.read( type ));
+        
+    }
+  public void updateTemplete(String type ,String template){
+        managment.update( type , template);
+        
+    }
+  public void RemoveTemplete(String type ){
+        managment.delete( type);
+        
+    }
+*/
+
 
 
 }

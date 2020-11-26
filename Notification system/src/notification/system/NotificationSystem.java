@@ -16,7 +16,21 @@ public class NotificationSystem {
      */
     public static void main(String[] args) {
 
+NotificationTemplates x =new NotificationTemplates();
+ 
+ 
+ x.create("confirmation", "hellow dear *","english");
 
+ 
+  x.update("confirmation", "hellow dear *","englisaah");
+
+ /*
+String y=x.read("confirmation","english");
+ 
+        System.out.println(y);
+    
+*/
+   
         
         
     
