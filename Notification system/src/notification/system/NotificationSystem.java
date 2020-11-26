@@ -16,7 +16,6 @@ public class NotificationSystem {
      */
     public static void main(String[] args) {
 
-    System.out.println("mjnbb");
 
         
         
