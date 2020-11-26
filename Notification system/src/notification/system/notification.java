@@ -19,19 +19,12 @@ public class notification {
     public void manage(String type ,String[] Replace, String method){
     
    String notification= this.replacement(Replace,type,method);
-    
-    
-    
-    
-    }
-    
-
-    
+   }
+  
     
     public  String replacement(String[] replace, String type,String method ){
         
-      String template =managment.read(type);
-   
+      String template =managment.read(type); 
 for(int j=0;j<replace.length;j++){
  for(int i=0;i<template.length();i++){
    if(template.charAt(i)=='*'){

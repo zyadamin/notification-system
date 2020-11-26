@@ -51,15 +51,8 @@ public class NotificationTemplates {
   newOne.setLanguage(Language);
   notifi.add(newOne);
   }
-  
-  
-
-  
+ 
   }
-   
-
-    
-    
     
    public void update(String type ,String template,String Language ){
        boolean exist=false;
@@ -73,10 +66,8 @@ public class NotificationTemplates {
        this.notifi.get(index).setTemplete(template);}
    else{
        System.out.println("Templete Not exist");
+   }}
    }
-    }
-   }
-   
    
    public void delete(String type){
   
@@ -95,9 +86,6 @@ public class NotificationTemplates {
     }
    }    
 
-    
-   
-   
    public String read(String type,String Language){
   
     boolean exist=false;
@@ -113,8 +101,7 @@ public class NotificationTemplates {
        System.out.println("Templete Not exist");
    }
     }  
-    
-    return  "not found";
+     return  "not found";
     }
    
     
