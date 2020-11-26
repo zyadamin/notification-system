@@ -23,7 +23,7 @@ public class notification {
 
     String notification=this.replacement(replace, template);
     
-    
+    System.out.println("kjhjbb");
     
     }
     
