@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class NotificationTemplates {
     
-   public ArrayList<notificationProperities> notifi= new ArrayList<>();
+    ArrayList<notificationProperities> notifi= new ArrayList<>();
 
    
     public void create(String type ,String template ,String Language){
