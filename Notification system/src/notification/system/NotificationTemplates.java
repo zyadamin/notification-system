@@ -5,7 +5,12 @@
  */
 package notification.system;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -15,7 +20,33 @@ public class NotificationTemplates {
     
     ArrayList<notificationProperities> notifi= new ArrayList<>();
 
-   
+       public NotificationTemplates() throws FileNotFoundException, IOException {
+    
+           FileReader read= new FileReader("templates.txt");
+           Scanner input=new Scanner(read);
+           
+           String type="",x="";
+           while(input.hasNextLine()){
+          if(type.equals("")){ 
+           x=input.nextLine();
+              type=x;
+          }
+          
+           while(input.hasNextLine()){
+           x=input.nextLine();
+           int y=x.indexOf('>');
+           if(y==-1){type=x;break;}
+           String language=x.substring(0, y);
+           String temp=x.substring(y+1, x.length());
+           this.create(type, temp, language);
+           }
+           
+
+           }
+           
+       read.close();
+       }
+
     public void create(String type ,String template ,String Language){
        boolean exist=false;
       int  index=0;
@@ -64,7 +95,9 @@ public class NotificationTemplates {
    if(this.notifi.get(i).getType().equals(type)&&this.notifi.get(i).existLanguage(Language)){
        exist=true;
        index=i;
-   }    }
+   }    
+   }
+   
    if(exist){
       
        this.notifi.get(index).replaceTemplate(Language, template);
@@ -79,7 +112,7 @@ public class NotificationTemplates {
   
    boolean exist=false;
      int index=0;
-       type=type.toUpperCase();
+      type=type.toUpperCase();
 
    for(int i=0;i<this.notifi.size();i++){
    if(this.notifi.get(i).getType().equals(type)){
@@ -140,8 +173,19 @@ public class NotificationTemplates {
    
    }
 
-    public NotificationTemplates() {
+public void writeIntoFile() throws IOException{
+    FileWriter write= new FileWriter("templates.txt");
+    for(int i=0;i<notifi.size();i++){
+    write.write(notifi.get(i).getType()+"\n");
+    
+    for(int j=0;j<notifi.get(i).getLanguage().size();j++){
+    write.write(notifi.get(i).getLanguage().get(j)+">"+notifi.get(i).getTemplete().get(j)+"\n");
     }
+    
+   }
 
+write.close();
+}
+   
     
 }

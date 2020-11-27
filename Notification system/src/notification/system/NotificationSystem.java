@@ -5,6 +5,8 @@
  */
 package notification.system;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -17,12 +19,12 @@ public class NotificationSystem {
      * @param args the command line arguments
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
        
  NotificationTemplates x =new NotificationTemplates();
  
- x.create("confirmation","Hello (*) To confirm your email address, click the link below\n" +"https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec ","english");  
-  x.create("confirmation","مرحبا لكي يتم تاكيد عنوان البريد الالكتروني اضغط علي اللينك ف الاسفل \n"+"https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec ","arabic");
+  x.create("confirmation","Hello (*) To confirm your email address, click the link below" +"https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec ","english");  
+  x.create("confirmation","مرحبا لكي يتم تاكيد عنوان البريد الالكتروني اضغط علي اللينك ف الاسفل "+"https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec ","arabic");
   x.create("forgetten password","Please use the following password to access your account:WQgJSNumvq","english");
   x.create("forgetten password","رجاءا استخدم كلمه المرور التاليه لاعاده حسابك :WQgJSNumvq","arabic");
   x.create("Booking","Dear (*) , your booking of the {*} is confirmed. thanks for using our store ","english");
@@ -32,8 +34,10 @@ public class NotificationSystem {
   x.readAll("confirmation");
   x.update("Booking"," عزيزناالعميل  يتم تأكيد حجز المنتج شكرا لاستخدامك موقعنا", "arabic");
   System.out.println(x.read("Booking","arabic"));
-  x.delete("forgetten password");
+ // x.delete("forgetten password");
   x.readAll("forgetten password");
+  
+  x.writeIntoFile();
 
     }
     

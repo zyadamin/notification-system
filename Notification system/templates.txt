@@ -1,0 +1,9 @@
+CONFIRMATION
+ENGLISH>Hello (*) To confirm your email address, click the link belowhttps://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec 
+ARABIC>مرحبا لكي يتم تاكيد عنوان البريد الالكتروني اضغط علي اللينك ف الاسفل https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec 
+BOOKING
+ENGLISH>Dear (*) , your booking of the {*} is confirmed. thanks for using our store 
+ARABIC> عزيزناالعميل  يتم تأكيد حجز المنتج شكرا لاستخدامك موقعنا
+FORGETTEN PASSWORD
+ENGLISH>Please use the following password to access your account:WQgJSNumvq
+ARABIC>رجاءا استخدم كلمه المرور التاليه لاعاده حسابك :WQgJSNumvq
