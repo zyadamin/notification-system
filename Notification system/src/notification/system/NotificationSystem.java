@@ -21,12 +21,11 @@ public class NotificationSystem {
        
  NotificationTemplates x =new NotificationTemplates();
  
- x.create("confirmation","Hello (*) To confirm your email address, click the link below\n" +
-"https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec ","english");  
+ x.create("confirmation","Hello (*) To confirm your email address, click the link below\n" +"https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec ","english");  
   x.create("confirmation","مرحبا لكي يتم تاكيد عنوان البريد الالكتروني اضغط علي اللينك ف الاسفل \n"+"https://ask.fm/*/confirm-email/qadoiijzj6cabjz1soxe6xidpohczec ","arabic");
   x.create("forgetten password","Please use the following password to access your account:WQgJSNumvq","english");
   x.create("forgetten password","رجاءا استخدم كلمه المرور التاليه لاعاده حسابك :WQgJSNumvq","arabic");
-  x.create("Booking","Dear {x} , your booking of the {y} is confirmed. thanks for using our store ","english");
+  x.create("Booking","Dear (*) , your booking of the {*} is confirmed. thanks for using our store ","english");
   x.create("Booking","عزيزي العميل  يتم تأكيد حجز المنتج شكرا لاستخدامك موقعنا","arabic");
  x.readAll("forgetten password");
   x.readAll("Booking");
@@ -37,5 +36,7 @@ public class NotificationSystem {
   x.readAll("forgetten password");
 
     }
+    
+    
     
 }
