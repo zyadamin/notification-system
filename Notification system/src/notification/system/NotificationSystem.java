@@ -7,7 +7,7 @@ package notification.system;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -29,12 +29,12 @@ public class NotificationSystem {
   x.create("forgetten password","رجاءا استخدم كلمه المرور التاليه لاعاده حسابك :WQgJSNumvq","arabic");
   x.create("Booking","Dear (*) , your booking of the {*} is confirmed. thanks for using our store ","english");
   x.create("Booking","عزيزي العميل  يتم تأكيد حجز المنتج شكرا لاستخدامك موقعنا","arabic");
- x.readAll("forgetten password");
+  x.readAll("forgetten password");
   x.readAll("Booking");
   x.readAll("confirmation");
   x.update("Booking"," عزيزناالعميل  يتم تأكيد حجز المنتج شكرا لاستخدامك موقعنا", "arabic");
   System.out.println(x.read("Booking","arabic"));
- // x.delete("forgetten password");
+  x.delete("forgetten password");
   x.readAll("forgetten password");
   
   x.writeIntoFile();
