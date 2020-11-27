@@ -17,10 +17,10 @@ public class NotificationTemplates {
 
    
     public void create(String type ,String template ,String Language){
-        
        boolean exist=false;
       int  index=0;
-    
+     type=type.toUpperCase();
+     Language=Language.toUpperCase();
       for(int i=0;i<notifi.size();i++){
      if(type.equals(notifi.get(i).getType())){
       exist=true;
@@ -57,11 +57,14 @@ public class NotificationTemplates {
    public void update(String type ,String template,String Language ){
        boolean exist=false;
         int index=0;
+     type=type.toUpperCase();
+     Language=Language.toUpperCase();
+
    for(int i=0;i<this.notifi.size();i++){
    if(this.notifi.get(i).getType().equals(type)&&this.notifi.get(i).existLanguage(Language)){
        exist=true;
        index=i;
-   }    
+   }    }
    if(exist){
       
        this.notifi.get(index).replaceTemplate(Language, template);
@@ -69,7 +72,6 @@ public class NotificationTemplates {
    else{
        System.out.println("Templete Not exist");
    }
-    }
    }
    
    
@@ -77,55 +79,69 @@ public class NotificationTemplates {
   
    boolean exist=false;
      int index=0;
+       type=type.toUpperCase();
+
    for(int i=0;i<this.notifi.size();i++){
    if(this.notifi.get(i).getType().equals(type)){
        exist=true;
        index=i;
-   }    
+   }   } 
    if(exist){
        this.notifi.remove(index);
    }
    else{
        System.out.println("Type Not exist");
-   }
+   
     }
    }    
 
    public String read(String type,String Language){
-  
+
     boolean exist=false;
         int index=0;
+     type=type.toUpperCase();
+     Language=Language.toUpperCase();
+
    for(int i=0;i<this.notifi.size();i++){
    if(this.notifi.get(i).getType().equals(type)&&this.notifi.get(i).existLanguage(Language)){
        exist=true;
        index=i;
-   }    
+   }    }
    if(exist){
      return this.notifi.get(index).getTemplete(Language);}
    else{
-       System.out.println("Templete Not exist");
+    return "Templete Not Exist";
    }
-    }  
     
-    return  "not found";
-    }
+        }
    
    public void readAll(String type){
    
       int index=0;
+      boolean exist=false;
+    type=type.toUpperCase();
+
    for(int i=0;i<notifi.size();i++){
     if(this.notifi.get(i).getType().equals(type)){
-    index=i;
-
+        exist=true;
+        index=i;
     }
     }
-   
+   if(exist){
+    System.out.println('$'+type);
      for(int j=0;j<notifi.get(index).getTemplete().size();j++){
-     System.out.println(notifi.get(index).getLanguage().get(j)+"   "+notifi.get(index).getTemplete().get(j));
+     System.out.println(notifi.get(index).getLanguage().get(j)+" >>> "+notifi.get(index).getTemplete().get(j));
      
      }
-   
+   }
+   else{
+       System.out.println("Type Not Exist");
+   }
    
    }
+
+    public NotificationTemplates() {
+    }
+
     
 }
