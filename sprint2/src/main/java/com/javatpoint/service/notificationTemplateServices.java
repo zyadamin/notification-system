@@ -10,7 +10,6 @@ public class notificationTemplateServices
 @Autowired
 DataBase notificationsRepository;
 
-
 public notificationTemplate getnotificationsById(int id) 
 {
 return notificationsRepository.Read(id);

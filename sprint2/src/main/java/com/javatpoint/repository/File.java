@@ -1,7 +1,15 @@
 package com.javatpoint.repository;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
+import com.javatpoint.model.Language;
+import com.javatpoint.model.Method;
+import com.javatpoint.model.Type;
 import com.javatpoint.model.notificationTemplate;
 
 public class File {
@@ -11,9 +19,7 @@ public class File {
 	  //   notoficationQueue x;
 	    public void create(notificationTemplate temp){
 	     
-	     
 	     templates.add(temp);
-	     
 	     
 	     }
 	     
@@ -94,8 +100,43 @@ public class File {
 	      templates.remove(id);
 	      }
 	     
+	      public notificationTemplate Read(int id) {
+	    	  
+	    	  notificationTemplate x=new notificationTemplate();
+	    	  for(int i=0;i<templates.size();i++){
+	 	         
+	 	         if(templates.get(i).getId()==id){
+	 	        	 return templates.get(i);
+	 	         }}
+	    	  return x;
+	    	  }
+	      public void writeIntoFile() throws IOException{
+	    	    FileWriter write= new FileWriter("templates.txt");
+	    	    for(int i=0;i<templates.size();i++){
+	    	    	write.write(templates.get(i).getId()+"\n");
+	    	    	write.write(templates.get(i).getType()+"\n");
+	    	    	write.write(templates.get(i).getContent()+"\n");
+	    	    	write.write(templates.get(i).getLanguage()+"\n");  	
+	    	    	write.write(templates.get(i).getMethod()+"\n");
+	    	    
+	    	    }
+	    	write.close();
+	    	}
+public void Read() throws FileNotFoundException {
+	FileReader read= new FileReader("templates.txt");
+    Scanner input=new Scanner(read);
+    
+    String type="",x="";
+   
+while(input.hasNext()) {
+	for(int i=0;i<5;i++){
+		
+	}
+	}
+}
+
 	     
-	    public  notificationTemplate replacment(int id,String[] replace){
+	  /*  public  notificationTemplate replacment(int id,String[] replace){
 	   int num=0;
 	        
 	   for(int i=0;i<templates.size();i++){
@@ -122,7 +163,7 @@ public class File {
 	   return  newOne;
 	   
 	     
-	 }
+	 }*/
 
 	   /* public void send() {
 	 	   x.insert();
