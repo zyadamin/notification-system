@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javatpoint.model.notificationTemplate;
+import com.javatpoint.repository.NotificationDataBase;
 //mark class as Controller
-import com.javatpoint.service.notificationTemplateServices;
 
 @RestController
 public class notificationController 
 {
 @Autowired
-notificationTemplateServices notifi;
+NotificationDataBase notifi;
 
 //creating a get mapping that retrieves the detail of a specific notification
 
 @GetMapping("/notification/{notificationid}")
 private notificationTemplate getNotification(@PathVariable("notificationid") int notificationid) 
 {
-return notifi.getnotificationsById(notificationid);
+return notifi.Read(notificationid);
 }
 //creating a delete mapping that deletes a specified book
 
@@ -37,7 +37,7 @@ private boolean deleteNotification(@PathVariable("notificationid") int notificat
 @PostMapping("/notifications")
 private boolean addNotification(@RequestBody notificationTemplate notification) 
 {
-return	notifi.Save(notification);
+return	notifi.create(notification);
 }
 //creating put mapping that updates the book detail 
 

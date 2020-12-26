@@ -1,23 +1,12 @@
 package com.javatpoint.model;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-@Entity  
-//defining class name as Table name  
-@Table  
+ 
 public class notificationTemplate {
     static int idCount=1;
-    @Id  
-    @Column 
+ 
     int id;
-    @Column  
     Type type;
-    @Column  
     String content;
-    @Column  
     Language language;
-    @Column  
     Method method;
 
     public notificationTemplate() {
