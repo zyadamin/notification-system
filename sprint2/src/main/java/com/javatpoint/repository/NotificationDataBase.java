@@ -18,7 +18,7 @@ public class NotificationDataBase implements notificationModule
 {
 	 String url = "jdbc:mysql://localhost:3306/notificationtemblete";
 	 
-	 String user = "zyad";
+	 String user = "salsabil";
 	 String password = "123";
 	    Connection Con = null; 
 ResultSet RS=null;
