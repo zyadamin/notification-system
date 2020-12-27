@@ -45,14 +45,14 @@ return	notifi.create(notification);
 //creating put mapping that updates the notification detail 
 
 @PutMapping("/notifications")
-private notificationTemplate update(@RequestBody notificationTemplate notification) 
+private boolean update(@RequestBody notificationTemplate notification) 
 {
-	notifi.update(notification);
-return notification;
+	
+return notifi.update(notification);
 }
 
-@GetMapping("/notification/{criteria}")
-private ArrayList<notificationTemplate> getNotification(@PathVariable("notificationid") criteria searchCriteria) 
+@GetMapping("/SearchNotification/{criteria}")
+private ArrayList<notificationTemplate> getNotification(@PathVariable("criteria") criteria searchCriteria) 
 {
 return notifi.Search(searchCriteria);
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public class QueueingDataBase {
 	 String url = "jdbc:mysql://localhost:3306/notificationtemblete";
 	 
-	 String user = "salsabil";
+	 String user = "zyad";
 	 String password = "123";
 	 Connection Con = null; 
      ResultSet RS=null;
@@ -33,15 +33,14 @@ public class QueueingDataBase {
 		int result=0;
 
 	
-		String query = "INSERT INTO `notifiwithmail` (`id`,`content`, `mail`,`templete_id`)"
-		        + " values (?, ?, ?, ?)";
+		String query = "INSERT INTO `notifiwithmail` (`content`, `mail`,`templete_id`)"
+		        + " values ( ?, ?, ?)";
 		try {
 	 PreparedStatement preparedStmt = Con.prepareStatement(query);
 
-	 preparedStmt.setInt(1, 3);
-	 preparedStmt.setString(2,content);
-	 preparedStmt.setString(3,mail);
-	 preparedStmt.setInt(4,templete_id);
+	 preparedStmt.setString(1,content);
+	 preparedStmt.setString(2,mail);
+	 preparedStmt.setInt(3,templete_id);
 	  
 	  result=preparedStmt.executeUpdate();
 
@@ -61,15 +60,14 @@ public class QueueingDataBase {
 	{
 		int result=0;
 
-		String query = "INSERT INTO `notifiwithsms` (`id`,`content`, `number`,`templete_id`)"
-		        + " values (?, ?, ?, ?)";
+		String query = "INSERT INTO `notifiwithsms` (`content`, `number`,`templete_id`)"
+		        + " values (?, ?, ?)";
 		try {
 		PreparedStatement preparedStmt = Con.prepareStatement(query);
 
-		preparedStmt.setInt(1, 3);
-		preparedStmt.setString(2,content);
-		preparedStmt.setString(3,number);
-		preparedStmt.setInt(4,templete_id);
+		preparedStmt.setString(1,content);
+		preparedStmt.setString(2,number);
+		preparedStmt.setInt(3,templete_id);
 
 		result=preparedStmt.executeUpdate();
 

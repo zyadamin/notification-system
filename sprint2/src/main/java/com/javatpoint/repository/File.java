@@ -135,40 +135,6 @@ while(input.hasNext()) {
 	}
 }
 
-	     
-	  /*  public  notificationTemplate replacment(int id,String[] replace){
-	   int num=0;
-	        
-	   for(int i=0;i<templates.size();i++){
-	     if(templates.get(i).getId()==id){
-	    num=i;
-	  }
-	  }
-	        
-	        notificationTemplate newOne=new notificationTemplate(templates.get(num));
-	        String newContent=newOne.getContent();
-	     
-	 for(int j=0;j<replace.length;j++){
-	     for(int i=0;i<newContent.length();i++){
-	         
-	    if(newContent.charAt(j)=='*'){
-	     newContent=newContent.substring(0, i)+replace[j]+newContent.substring(i+1, newContent.length());
-	     break;
-	  }
-	  }
-	     
-	 }
-	 newOne.setContent(newContent);
-	      
-	   return  newOne;
-	   
-	     
-	 }*/
-
-	   /* public void send() {
-	 	   x.insert();
-	 	   
-	    }*/
 	    
 	      
 }

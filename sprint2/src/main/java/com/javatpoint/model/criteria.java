@@ -1,5 +1,11 @@
 package com.javatpoint.model;
 
 public enum criteria {
-confirmation;
+
+	arabic,english,email,sms,confirmation,booking,forgetpassword;
+
+
+	
+	
+	
 }
