@@ -5,7 +5,6 @@
  */
 package com.javatpoint.model;
 
-import java.security.PublicKey;
 
 /**
  *
