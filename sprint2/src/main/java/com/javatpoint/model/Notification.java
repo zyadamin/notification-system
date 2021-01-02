@@ -12,6 +12,7 @@ public class Notification {
 	int template_id;
 	String[] replacment;
 	String method;
+	
 	NotificationDataBase myData;  
 	QueueingDataBase export;	
 	public Notification(){
@@ -71,7 +72,7 @@ public boolean getData(Notification y ){
 			myData = new NotificationDataBase();
 			export= new QueueingDataBase();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		 content=myData.Read(y.template_id).getContent();

@@ -78,7 +78,7 @@ public class NotificationDataBase implements notificationModule
 		    ps.setString(3, x.getContent());
 		    ps.setInt(4, x.getLanguage().getMyLanguage());
 		    ps.setInt(5, x.getMethod().getMyMethod());
-			ps.executeUpdate();	
+		result=	ps.executeUpdate();	
 			
 		} catch (SQLException e) {
 
