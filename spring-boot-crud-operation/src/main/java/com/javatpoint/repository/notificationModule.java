@@ -8,6 +8,7 @@ package com.javatpoint.repository;
 
 import java.util.ArrayList;
 
+import com.javatpoint.model.Type;
 import com.javatpoint.model.criteria;
 import com.javatpoint.model.notificationTemplate;
 
@@ -20,7 +21,7 @@ public interface notificationModule {
     
 	 public boolean create(notificationTemplate x);
 	 public boolean update(notificationTemplate x);
-	 public boolean delete(int id);
-	 public notificationTemplate Read(int id);
+	 public boolean delete(Type type);
+	 public notificationTemplate Read(Type type);
 	 public ArrayList<notificationTemplate> Search(criteria x);
 }

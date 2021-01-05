@@ -20,7 +20,7 @@ import com.javatpoint.model.notificationTemplate;
 public class NotificationDataBase implements notificationModule
 {
 	 String url = "jdbc:mysql://localhost:3306/notificationtemblete"; 
-	 String user = "zyad";
+	 String user = "salsabil";
 	 String password = "123";
 	 Connection Con = null; 
      ResultSet RS=null;
@@ -37,16 +37,14 @@ public class NotificationDataBase implements notificationModule
 	public boolean create(notificationTemplate x)   {
 	
 		int result=0;
-		String query = "INSERT INTO `templete` (`id`, `type`, `content`, `language`,`method`)"
-    	        + " values (?, ?, ?, ?,?)";
+		String query = "INSERT INTO `templete` ( `type`, `content`, `language`)"
+    	        + " values ( ?, ?, ?)";
 		try {
      PreparedStatement preparedStmt = Con.prepareStatement(query);
 
-     preparedStmt.setInt(1, x.getId());
-     preparedStmt.setInt(2, x.getType().getMyType());
-     preparedStmt.setString(3, x.getContent());
-     preparedStmt.setInt(4, x.getLanguage().getMyLanguage());
-     preparedStmt.setInt(5, x.getMethod().getMyMethod());
+     preparedStmt.setInt(1, x.getType().getMyType());
+     preparedStmt.setString(2, x.getContent());
+     preparedStmt.setInt(3, x.getLanguage().getMyLanguage());
 
 
      result=preparedStmt.executeUpdate();
@@ -71,14 +69,13 @@ public class NotificationDataBase implements notificationModule
 		int result=0;
 		PreparedStatement ps;
 		try {
-			ps = Con.prepareStatement("UPDATE `templete` SET `id`=?,`type`=?,`content`=?,`language`=?,`method`=? where `id`=?");
+			ps = Con.prepareStatement("UPDATE `templete` SET `content`=?,`language`=? where `type`=?");
 	
-			ps.setInt(1, x.getId());
-		    ps.setInt(2, x.getType().getMyType());
-		    ps.setString(3, x.getContent());
-		    ps.setInt(4, x.getLanguage().getMyLanguage());
-		    ps.setInt(5, x.getMethod().getMyMethod());
-		result=	ps.executeUpdate();	
+		    ps.setString(1, x.getContent());
+		    ps.setInt(2, x.getLanguage().getMyLanguage());
+		    ps.setInt(3, x.getType().getMyType());
+
+			ps.executeUpdate();	
 			
 		} catch (SQLException e) {
 
@@ -94,15 +91,15 @@ public class NotificationDataBase implements notificationModule
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(Type type) {
 int result=0;
 
 		
 PreparedStatement ps;
 try {
-	ps = Con.prepareStatement("DELETE FROM templete WHERE id = ?");
+	ps = Con.prepareStatement("DELETE FROM templete WHERE type = ?");
 
-	ps.setInt(1,id);
+	ps.setInt(1,type.getMyType());
 	result=ps.executeUpdate();
 }
 catch (SQLException e) {
@@ -119,21 +116,18 @@ catch (SQLException e) {
 	
 	
 	@Override
-	public notificationTemplate Read(int id) {
+	public notificationTemplate Read(Type type) {
 		PreparedStatement ps;
 		notificationTemplate x=new notificationTemplate();
 		try {
 			
-			ps = Con.prepareStatement("select * from templete where id=?");
-			ps.setInt(1, id);
+			ps = Con.prepareStatement("select * from templete where type=?");
+			ps.setInt(1, type.getMyType());
 			RS=ps.executeQuery();
 			
 			if(RS.next()) {
-				x.setId(RS.getInt("id"));
 				x.setContent(RS.getString("content"));
 				x.setLanguage(Language.getLanguage(RS.getInt("language")));
-				x.setMethod(Method.getMethod(RS.getInt("method")));
-				
 				x.setType(Type.getType(RS.getInt("type")));
 				
 			}
@@ -176,30 +170,6 @@ catch (SQLException e) {
 		}
 		
 		
-		else if(search.equals(criteria.email)){
-			
-			try {
-				ps = Con.prepareStatement("select * from templete where method=0 ");
-				RS=ps.executeQuery();
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
-		
-		else if(search.equals(criteria.sms)){
-			
-			try {
-				ps = Con.prepareStatement("select * from templete where method=1");
-				RS=ps.executeQuery();
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-	
-		}
-
 		
 		else if(search.equals(criteria.confirmation)){
 			
@@ -244,10 +214,8 @@ try {
 			
 		   while(RS.next()) {
 		notificationTemplate temp= new notificationTemplate();
-			   temp.setId(RS.getInt("id"));
 			   temp.setContent(RS.getString("content"));
 			   temp.setLanguage(Language.getLanguage(RS.getInt("language")));
-			   temp.setMethod(Method.getMethod(RS.getInt("method")));			
 			   temp.setType(Type.getType(RS.getInt("type")));
 	
 			   myList.add(temp);

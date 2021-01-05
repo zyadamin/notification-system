@@ -1,6 +1,5 @@
 package com.javatpoint.repository;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +15,10 @@ public class File {
 	
 	  ArrayList<notificationTemplate>templates = new ArrayList<>();
 	    
-	  //   notoficationQueue x;
+	  public File() throws IOException {
+		ReadfromFile();
+			
+		}
 	    public void create(notificationTemplate temp){
 	     
 	     templates.add(temp);
@@ -73,7 +75,6 @@ public class File {
 	                method=input.next();   
 	            }
 	            
-	           templates.get(num).setMethod(Method.toString(method));
 
 	     
 	     }
@@ -100,12 +101,12 @@ public class File {
 	      templates.remove(id);
 	      }
 	     
-	      public notificationTemplate Read(int id) {
+	      public notificationTemplate Read(Type type) {
 	    	  
 	    	  notificationTemplate x=new notificationTemplate();
 	    	  for(int i=0;i<templates.size();i++){
 	 	         
-	 	         if(templates.get(i).getId()==id){
+	 	         if(templates.get(i).getType()==type){
 	 	        	 return templates.get(i);
 	 	         }}
 	    	  return x;
@@ -113,27 +114,31 @@ public class File {
 	      public void writeIntoFile() throws IOException{
 	    	    FileWriter write= new FileWriter("templates.txt");
 	    	    for(int i=0;i<templates.size();i++){
-	    	    	write.write(templates.get(i).getId()+"\n");
-	    	    	write.write(templates.get(i).getType()+"\n");
+	    	    	write.write(templates.get(i).getType().getMyType()+"\n");
 	    	    	write.write(templates.get(i).getContent()+"\n");
-	    	    	write.write(templates.get(i).getLanguage()+"\n");  	
-	    	    	write.write(templates.get(i).getMethod()+"\n");
+	    	    	write.write(templates.get(i).getLanguage().getMyLanguage()+"\n");  	
 	    	    
 	    	    }
 	    	write.close();
 	    	}
-public void Read() throws FileNotFoundException {
-	FileReader read= new FileReader("templates.txt");
-    Scanner input=new Scanner(read);
-    
-    String type="",x="";
-   
-while(input.hasNext()) {
-	for(int i=0;i<5;i++){
-		
-	}
-	}
-}
+	      public void ReadfromFile() throws IOException {
+
+	    		FileReader read= new FileReader("templates.txt");
+	    	    Scanner input=new Scanner(read);
+	    	    
+	    	    String type="",x="";
+	    	   
+	    	while(input.hasNextLine()) {
+	    		
+	    		notificationTemplate y=new notificationTemplate();
+	    		y.setType(Type.getType(Integer.parseInt(input.nextLine())));
+	    		y.setContent(input.nextLine());
+	    		y.setLanguage(Language.getLanguage(Integer.parseInt(input.nextLine())));
+	    		templates.add(y);
+	    		
+	    		}
+	    	read.close();
+	    	}
 
 	    
 	      

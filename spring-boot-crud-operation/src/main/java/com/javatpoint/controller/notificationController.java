@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.javatpoint.model.Type;
 import com.javatpoint.model.criteria;
 import com.javatpoint.model.notificationTemplate;
 import com.javatpoint.repository.NotificationDataBase;
@@ -23,17 +24,19 @@ NotificationDataBase notifi;
 
 //creating a get mapping that retrieves the detail of a specific notification
 
-@GetMapping("/notification/{notificationid}")
-private notificationTemplate getNotification(@PathVariable("notificationid") int notificationid) 
+@GetMapping("/notification/{Type}")
+private notificationTemplate getNotification(@PathVariable("Type") Type type) 
 {
-return notifi.Read(notificationid);
+return notifi.Read(type);
 }
+//get all notification/////////////////////////////////////////////////////
+
 //creating a delete mapping that deletes a specified notification
 
-@DeleteMapping("/notification/{notificationid}")
-private boolean deleteNotification(@PathVariable("notificationid") int notificationid) 
+@DeleteMapping("/notification/{Type}")
+private boolean deleteNotification(@PathVariable("type") Type type) 
 {
-	return notifi.delete(notificationid);
+	return notifi.delete(type);
 }
 //creating post mapping that post the notification detail in the database
 

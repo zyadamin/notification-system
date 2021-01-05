@@ -5,26 +5,18 @@ import java.sql.SQLException;
 import org.springframework.stereotype.Repository;
 
 import com.javatpoint.repository.NotificationDataBase;
-import com.javatpoint.repository.QueueingDataBase;
+import com.javatpoint.repository.queueDatebase;
+import com.javatpoint.repository.saveEmail;
+import com.javatpoint.repository.saveSms;
 @Repository
 public class Notification {
 	
-	int template_id;
 	String[] replacment;
 	String method;
-	
 	NotificationDataBase myData;  
-	QueueingDataBase export;	
+	queueDatebase export;	
 	public Notification(){
 		
-	}
-	
-public int getTemplate_id() {
-		return template_id;
-	}
-
-	public void setTemplate_id(int template_id) {
-		this.template_id = template_id;
 	}
 
 	public String[] getReplacment() {
@@ -62,40 +54,40 @@ return  content;
  }
 	
 
-public boolean getData(Notification y ){
+public boolean getData(Notification y ,Type x,String method) throws SQLException{
 	
-	Method myMethod = null;
 	String content=null;
-
+ queueDatebase channel = null;
 	
 		try {
 			myData = new NotificationDataBase();
-			export= new QueueingDataBase();
+	
+		
 		} catch (SQLException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 content=myData.Read(y.template_id).getContent();
-		 myMethod=myData.Read(y.template_id).getMethod();
+		 content=myData.Read(x).getContent();
 
 	content= this.replace(y.replacment, content);
 	
 	
-if(myMethod.equals(Method.email)) {
+if(method.equals("email")) {
+	 channel=new saveEmail();
+
+}
+
+if(method.equals("sms")) {
+ channel=new saveSms();
+}
+
+return help(channel,content,method);
+
+}
+public boolean help(queueDatebase x,String content,String method) {
+	return x.save(content, method);
 	
-return  export.saveEmail(y.getTemplate_id(), content, y.getMethod());
-	
 }
-
-if(myMethod.equals(Method.sms)) {
-
-	return export.saveSMS(y.getTemplate_id(), content, y.getMethod());
-}
-return false;
-
-
-}
-
 
 
 }
