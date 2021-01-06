@@ -2,19 +2,13 @@ package com.javatpoint;
 
 import java.io.IOException;
 
-import com.javatpoint.model.Language;
-import com.javatpoint.model.Method;
-import com.javatpoint.model.Type;
-import com.javatpoint.model.notificationTemplate;
-import com.javatpoint.repository.File;
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
+
 public class main {
 
-	public static void main(String[] args) throws IOException {
-		
+	public static void main(String[] args) {
+
+	     
+	/*	
 		// Recipient's email ID needs to be mentioned.
 	      String to = "Oamin4753@gmail.com";
 
@@ -33,7 +27,6 @@ public class main {
 	      // Get the default Session object.
 	      Session session = Session.getDefaultInstance(properties);
 
-	      try {
 	         // Create a default MimeMessage object.
 	         MimeMessage message = new MimeMessage(session);
 
@@ -55,7 +48,7 @@ public class main {
 	      } catch (MessagingException mex) {
 	         mex.printStackTrace();
 	      }
-	   
+	   */
+	
 	}
-
 }
