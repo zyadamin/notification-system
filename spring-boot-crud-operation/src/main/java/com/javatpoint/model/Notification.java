@@ -81,9 +81,10 @@ if(method.equals("sms")) {
  channel=new saveSms();
 }
 
-return help(channel,content,method);
+return help(channel,content,y.method);
 
 }
+
 public boolean help(queueDatebase x,String content,String method) {
 	return x.save(content, method);
 	

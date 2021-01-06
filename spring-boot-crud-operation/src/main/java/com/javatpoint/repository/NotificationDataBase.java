@@ -20,7 +20,7 @@ import com.javatpoint.model.notificationTemplate;
 public class NotificationDataBase implements notificationModule
 {
 	 String url = "jdbc:mysql://localhost:3306/notificationtemblete"; 
-	 String user = "salsabil";
+	 String user = "zyad";
 	 String password = "123";
 	 Connection Con = null; 
      ResultSet RS=null;

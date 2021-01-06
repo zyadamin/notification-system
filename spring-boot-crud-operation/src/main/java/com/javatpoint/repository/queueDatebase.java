@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public abstract class queueDatebase {
 	 String url = "jdbc:mysql://localhost:3306/notificationtemblete";
 	 
-	 String user = "salsabil";
+	 String user = "zyad";
 	 String password = "123";
 	 Connection Con = null; 
     ResultSet RS=null;
