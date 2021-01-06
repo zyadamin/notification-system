@@ -28,18 +28,19 @@ public class sendEmail extends dequeue{
 				email=RS.getString("mail");
 				if(email.contains("@")&&email.contains(".com")) {
 				statue="success";	
-				}else {
+				}
+				else {
 					statue="failed";
 				}
+			
+				ps1 = Con.prepareStatement("UPDATE notifiwithmail SET `statue`=?  where mail =?");
+				
+			    ps1.setString(1, statue);
+			    ps1.setString(2, email);
+			    ps1.executeUpdate();	
 			}
 
-			ps1 = Con.prepareStatement("UPDATE `templete` SET `content`=?,`language`=? where `type`=?");
-	
-		    ps.setString(1, x.getContent());
-		    ps.setInt(2, x.getLanguage().getMyLanguage());
-		    ps.setInt(3, x.getType().getMyType());
 
-			ps.executeUpdate();	
 			
 		} catch (SQLException e) {
 
