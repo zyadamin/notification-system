@@ -3,12 +3,14 @@ package com.javatpoint;
 
 import com.javatpoint.repository.sendEmail;
 import com.javatpoint.repository.sendSms;
+
+import java.sql.SQLException;
 import java.util.Properties;    
 import javax.mail.*;    
 import javax.mail.internet.*;  
 
 public class main {
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws SQLException  {
 		/*
 		String from="zezoamen0@gmail.com";
 		String password="123456Zyad";
@@ -43,8 +45,8 @@ public class main {
         
            */
 		
-//	sendEmail x = new sendEmail();	
-//	x.send();
+	sendEmail x = new sendEmail();	
+	x.send();
 
 	//sendSms y= new sendSms();
 	//y.send();
