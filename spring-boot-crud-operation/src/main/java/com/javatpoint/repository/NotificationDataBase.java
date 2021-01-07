@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import com.javatpoint.model.Language;
-import com.javatpoint.model.Method;
 import com.javatpoint.model.Type;
 import com.javatpoint.model.criteria;
 //repository that extends CrudRepository
@@ -75,7 +74,7 @@ public class NotificationDataBase implements notificationModule
 		    ps.setInt(2, x.getLanguage().getMyLanguage());
 		    ps.setInt(3, x.getType().getMyType());
 
-			ps.executeUpdate();	
+		    result = ps.executeUpdate();	
 			
 		} catch (SQLException e) {
 
@@ -228,6 +227,30 @@ try {
 
    return myList;
 	}
+public ArrayList<notificationTemplate> readAll(){
+	PreparedStatement ps;
+	ArrayList<notificationTemplate>templetes=new ArrayList<notificationTemplate>();
+	try {
+		
+		ps = Con.prepareStatement("select * from templete");
+		RS=ps.executeQuery();
+		
+		while(RS.next()) {
+			notificationTemplate x=new notificationTemplate();
 
+			x.setContent(RS.getString("content"));
+			x.setLanguage(Language.getLanguage(RS.getInt("language")));
+			x.setType(Type.getType(RS.getInt("type")));
+			templetes.add(x);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return templetes;
+
+	
+	
+}
 	
 }

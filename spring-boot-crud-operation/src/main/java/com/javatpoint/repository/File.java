@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.javatpoint.model.Language;
-import com.javatpoint.model.Method;
 import com.javatpoint.model.Type;
 import com.javatpoint.model.notificationTemplate;
 
@@ -39,10 +38,7 @@ public class File {
 	        int num=0;
 	         for(int i=0;i<templates.size();i++){
 	         
-	         if(templates.get(i).getId()==id){
-	         num=i;
-	         break;
-	         }
+	   
 	         }
 	         
 	         if(choose==1){
@@ -70,10 +66,7 @@ public class File {
 	            System.out.println("enter new method");
 	             String method=input.next();
 	             
-	            while(Method.toString(method)==Method.notfound){
-	              System.out.println("enter valid method");   
-	                method=input.next();   
-	            }
+
 	            
 
 	     

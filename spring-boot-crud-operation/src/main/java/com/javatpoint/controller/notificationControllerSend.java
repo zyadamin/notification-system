@@ -25,5 +25,5 @@ private boolean  sendNotification(@PathVariable("Type")Type type,@PathVariable("
 {
 return  notifi.getData(noti,type,method) ;
 }
-////////////////////////get all 
+
 }

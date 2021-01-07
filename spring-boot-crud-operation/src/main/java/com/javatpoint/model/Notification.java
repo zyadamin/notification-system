@@ -64,8 +64,6 @@ public boolean getData(Notification y ,Type x,String method) throws SQLException
 	
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		 content=myData.Read(x).getContent();
 

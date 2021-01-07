@@ -2,6 +2,11 @@ package com.javatpoint.repository;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.javatpoint.model.Language;
+import com.javatpoint.model.Type;
+import com.javatpoint.model.notificationTemplate;
 
 public class saveSms extends queueDatebase{
 
@@ -34,6 +39,32 @@ public class saveSms extends queueDatebase{
 	
 		return false;
   }
+	public ArrayList<notificationTemplate> readAll(){
+		PreparedStatement ps;
+		ArrayList<notificationTemplate>templetes=new ArrayList<notificationTemplate>();
+		try {
+			
+			ps = Con.prepareStatement("select * from templete");
+			RS=ps.executeQuery();
+			
+			while(RS.next()) {
+				notificationTemplate x=new notificationTemplate();
+
+				x.setContent(RS.getString("content"));
+				x.setLanguage(Language.getLanguage(RS.getInt("language")));
+				x.setType(Type.getType(RS.getInt("type")));
+				templetes.add(x);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return templetes;
+
+		
+		
+	}
+		
 	}
 
 

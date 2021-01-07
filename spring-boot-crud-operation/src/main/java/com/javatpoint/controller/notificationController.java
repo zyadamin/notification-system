@@ -22,38 +22,45 @@ public class notificationController
 @Autowired
 NotificationDataBase notifi;
 
-//creating a get mapping that retrieves the detail of a specific notification
-
-@GetMapping("/notification/{Type}")
-private notificationTemplate getNotification(@PathVariable("Type") Type type) 
-{
-return notifi.Read(type);
-}
-//get all notification/////////////////////////////////////////////////////
-
-//creating a delete mapping that deletes a specified notification
-
-@DeleteMapping("/notification/{Type}")
-private boolean deleteNotification(@PathVariable("type") Type type) 
-{
-	return notifi.delete(type);
-}
-//creating post mapping that post the notification detail in the database
-
+//add new notification
 @PostMapping("/notifications")
 private boolean addNotification(@RequestBody notificationTemplate notification) 
 {
 return	notifi.create(notification);
 }
-//creating put mapping that updates the notification detail 
 
-@PutMapping("/notifications")
+//update notification
+@PutMapping("/upateNotifications")
 private boolean update(@RequestBody notificationTemplate notification) 
 {
 	
 return notifi.update(notification);
 }
 
+
+//get notification by type
+@GetMapping("/notification/{Type}")
+private notificationTemplate getNotification(@PathVariable("Type") Type type) 
+{
+return notifi.Read(type);
+}
+
+//get all notification
+@GetMapping("/notification")
+
+private ArrayList<notificationTemplate> getAllNotification() 
+{
+return notifi.readAll();
+}
+
+//delete notification with specific type
+@DeleteMapping("/deletNotification/{Type}")
+private boolean deleteNotification(@PathVariable("Type") Type type) 
+{
+	return notifi.delete(type);
+}
+
+//search for notification
 @GetMapping("/SearchNotification/{criteria}")
 private ArrayList<notificationTemplate> getNotification(@PathVariable("criteria") criteria searchCriteria) 
 {

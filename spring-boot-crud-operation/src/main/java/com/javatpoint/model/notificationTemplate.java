@@ -1,7 +1,6 @@
 package com.javatpoint.model;
  
 public class notificationTemplate {
-    static int idCount=1;
  
     Type type;
     String content;

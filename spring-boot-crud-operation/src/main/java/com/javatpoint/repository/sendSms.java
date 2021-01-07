@@ -13,19 +13,20 @@ public class sendSms extends dequeue{
 	@Override
 	public void send() {
 		
-		int result=0;
 		ResultSet RS=null;
 		PreparedStatement ps;
 		PreparedStatement ps1;
 
 		try {
-			ps = Con.prepareStatement("select * from notifiwithsms");
+			ps = Con.prepareStatement("SELECT * FROM `notifiwithsms` WHERE statue is null");
 			RS=ps.executeQuery();
 			String number="";
 			String statue="";
+			int id=0;
 			while(RS.next()) {
 			
 				number=RS.getString("number");
+				id=RS.getInt("id");
 				if(number.charAt(0)=='0'&&number.charAt(1)=='1'&&number.length()==11) {
 				statue="success";	
 				}
@@ -33,10 +34,10 @@ public class sendSms extends dequeue{
 					statue="failed";
 				}
 			
-				ps1 = Con.prepareStatement("UPDATE notifiwithsms SET `statue`=?  where number =?");
+				ps1 = Con.prepareStatement("UPDATE notifiwithsms SET `statue`=?  where id =?");
 				
 			    ps1.setString(1, statue);
-			    ps1.setString(2, number);
+			    ps1.setInt(2, id);
 			    ps1.executeUpdate();	
 			}
 

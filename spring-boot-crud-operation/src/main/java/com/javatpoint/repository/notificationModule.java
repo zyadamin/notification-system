@@ -24,4 +24,6 @@ public interface notificationModule {
 	 public boolean delete(Type type);
 	 public notificationTemplate Read(Type type);
 	 public ArrayList<notificationTemplate> Search(criteria x);
+	 public ArrayList<notificationTemplate> readAll();
+	
 }
